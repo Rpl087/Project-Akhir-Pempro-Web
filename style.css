@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.main-menu {
+    background-color: #555; /* untuk warna menyesuaikan selera */
+    padding: 1rem;
+    position: relative;
+    
+}
+  
+.main-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+  
+.main-menu ul li {
+    margin-right: 1rem;
+}
+  
+.main-menu a {
+    color: #fff; /* untuk warna menyesuaikan selera */
+    text-decoration: none;
+}
+  
+.main-menu a:hover, .main-menu a:active {
+    background-color: #972c2cad; /* untuk warna menyesuaikan selera */
+    padding: 0.7rem;
+}
+
+#introduce {
+    justify-content: center;
+    text-align: center;
+}
