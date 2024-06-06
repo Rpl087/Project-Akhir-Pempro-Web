@@ -1,6 +1,7 @@
 <?php
 session_start();
-include '../includes/header.php';
+
+include 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
@@ -40,6 +41,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </form>
 </div>
-<?php
-include '../includes/footer.php';
-?>

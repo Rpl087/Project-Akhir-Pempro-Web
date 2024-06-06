@@ -1,6 +1,7 @@
 <?php
 session_start();
-include '../includes/header.php';
+
+include 'config.php';
 
 // Fetch shipment data from the database
 $sql = "SELECT * FROM shipments WHERE user_id='".$_SESSION['user']['id']."'";
@@ -20,6 +21,3 @@ $result = $conn->query($sql);
         ?>
     </div>
 </div>
-<?php
-include '../includes/footer.php';
-?>

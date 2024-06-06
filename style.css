@@ -4,8 +4,43 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.home_content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.text {
+    flex: 1;
+    margin-right: 2em;
+}
+
+.text p {
+    margin: 0;
+}
+
+.image {
+    flex: 1;
+}
+
+.image img {
+    max-width: 75%;
+}
+
 .main-menu {
-    background-color: #555; /* untuk warna menyesuaikan selera */
+    background-color: #4fb9ff;
     padding: 1rem;
     position: relative;  
     display: flex;
@@ -19,9 +54,9 @@ body {
 }
 
 .main-menu .logo {
-    height: 50px; /* Sesuaikan ukuran tinggi logo */
-    width: auto; /* Otomatis menyesuaikan lebar sesuai rasio */
-    margin-right: 1rem; /* Jarak antara logo dan teks */
+    height: 50px;
+    width: auto;
+    margin-right: 1rem; 
 }
 
 .main-menu h1 {
@@ -43,12 +78,12 @@ body {
 }
 
 .main-menu a {
-    color: #fff; /* untuk warna menyesuaikan selera */
+    color: #fff; 
     text-decoration: none;
 }
 
 .main-menu a:hover, .main-menu a:active {
-    background-color: #972c2cad; /* untuk warna menyesuaikan selera */
+    background-color: black;
     padding: 0.7rem;
 }
 
@@ -132,7 +167,7 @@ body {
 .my-account .account-section .btn {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background-color: #555;
+    background-color: #4fb9ff;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -185,10 +220,89 @@ body {
 
 .social-media a {
     margin-right: 0.5rem;
-    color: #555;
+    color: #4fb9ff;
     text-decoration: none;
 }
 
 .social-media a:hover {
     color: #972c2cad;
+}
+
+.cek-resi-form {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: left;
+}
+
+.cek-resi-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.cek-resi-form input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.cek-resi-form button {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #4fb9ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cek-resi-form button:hover {
+    background-color: #972c2cad;
+}
+
+.shipment-details {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.shipment-details p {
+    margin: 0.5rem 0;
+}
+
+.form-container {
+    background-color: #f9f9f9;
+    position: absolute;
+    padding: 2em 3em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: left;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5em;
+}
+
+input, select, button {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    font-size: 1em;
+    width: 100%;
 }

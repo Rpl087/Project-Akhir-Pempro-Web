@@ -1,6 +1,8 @@
 <?php
+
 session_start();
-include '../includes/header.php';
+
+include 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $current_password = $_POST['current_password'];
@@ -49,6 +51,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </form>
 </div>
-<?php
-include '../includes/footer.php';
-?>
