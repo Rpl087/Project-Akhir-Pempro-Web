@@ -4,6 +4,63 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.login-container {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    color: #dc3545;
+    margin-top: 5px;
+}
+
+
+.footer {
+    background-color: #4fb9ff;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
 .home_content {
     max-width: 1200px;
     margin: 0 auto;
@@ -84,18 +141,7 @@ body {
 
 .main-menu a:hover, .main-menu a:active {
     background-color: black;
-    padding: 0.3rem;
-}
-
-.profil img {
-    position: absolute;
-    top: 20%;
-    left: 95%;
-}
-
-.profil img:hover, .profil img:active {
-    background-color: #ffffff13;
-    padding: 0.10rem;
+    padding: 0.7rem;
 }
 
 #introduce {
