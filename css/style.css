@@ -1,5 +1,8 @@
 body {
+    height: 100%;
     margin: 0;
+    display: flex;
+    flex-direction: column;
     padding: 0;
     font-family: Arial, sans-serif;
 }
@@ -52,6 +55,7 @@ body {
 
 .footer {
     background-color: #4fb9ff;
+    color:#fff;
     font-family: Arial;
     text-align: center;
     padding: 5px auto;
@@ -80,7 +84,7 @@ body {
 .konten {
     display: flex;
     flex-direction: column;
-    background-color: #9EDDC4;
+    background-color: #def2ff;
 }
 
 .konten h1 {
@@ -201,41 +205,41 @@ body {
 }
 
 .my-account {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 1rem;
-    border: 1px solid #ccc;
+    max-width: 900px;
+    margin: 2.5rem auto;
+    padding: 3rem;
+    border: 3px solid #ccc;
     border-radius: 10px;
     background-color: #f9f9f9;
 }
 
 .my-account h2 {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .my-account .account-section {
-    margin-bottom: 1.5rem;
-}
-
-.my-account .account-section h3 {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 0.5rem;
     margin-bottom: 1rem;
 }
 
+.my-account .account-section h3 {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
 .my-account .account-section p {
-    margin: 0.5rem 0;
+    margin: 0.75rem 0;
 }
 
 .my-account .account-section .btn {
     display: inline-block;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1rem;
     background-color: #4fb9ff;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 .my-account .account-section .btn:hover {
@@ -265,8 +269,8 @@ body {
 
 .team-member img {
     border-radius: 50%;
-    height: 100px; /* Sesuaikan ukuran tinggi foto */
-    width: 100px; /* Sesuaikan ukuran lebar foto */
+    height: 100px; 
+    width: 100px; 
     margin-right: 1rem;
 }
 
@@ -344,12 +348,9 @@ body {
 }
 
 .form-container {
-    background-color:rgba(85, 255, 184, 0.219);
-    position: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 24rem 0;
+    background-color:#f9f9f9;
     padding: 2em 3em;
+    margin: auto;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -359,7 +360,6 @@ body {
 }
 
 form {
-    display: flex;
     flex-direction: column;
 }
 
@@ -377,6 +377,7 @@ form {
     background-color: #000000;
     color: #fff;
 }
+
 label {
     margin-bottom: 0.5em;
 }
@@ -386,4 +387,44 @@ input, select, button {
     padding: 0.5em;
     font-size: 1em;
     width: 100%;
+}
+
+.table-container {
+    margin: 20px; 
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table th, .user-table td {
+    border: 1px solid #ddd; 
+    padding: 8px; 
+    text-align: left;
+}
+
+.user-table th {
+    background-color: #f2f2f2; 
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #f2f2f2; 
+}
+
+.user-table tr:hover {
+    background-color: #ddd; 
+}
+
+.user-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.user-table th, .user-table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+}
+.user-table th {
+    background-color: #f2f2f2;
 }

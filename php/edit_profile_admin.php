@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Update data di sesi
                 $_SESSION['user']['name'] = $name;
                 $_SESSION['user']['phone'] = $phone;
-                header('Location: my_account.php');
+                header('Location: my_account_admin.php');
                 exit;
             } else {
                 echo "Error updating record: " . $conn->error;
@@ -98,12 +98,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <nav>
             <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="delivery.html">Delivery</a></li>
-                <li><a href="cek_resi.php">Cek Resi</a></li>
-                <li><a href="contact.html">About Us</a></li>
-                <li><a href="my_account.php">My Account</a></li>
+                <li><a href="../home_admin.html">Home</a></li>
+                <li><a href="../gallery_admin.html">Gallery</a></li>
+                <li><a href="manajemen_pengiriman.php">Manajemen</a></li>
+                <li><a href="../contact_admin.html">About Us</a></li>
+                <li><a href="my_account_admin.php">My Account</a></li>
             </ul>
         </nav>
     </header>

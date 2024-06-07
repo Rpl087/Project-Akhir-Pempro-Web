@@ -73,12 +73,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <nav>
             <ul>
-                <li><a href="../home.html">Home</a></li>
-                <li><a href="../gallery.html">Gallery</a></li>
-                <li><a href="../delivery.html">Delivery</a></li>
-                <li><a href="cek_resi.php">Cek Resi</a></li>
-                <li><a href="../contact.html">About Us</a></li>
-                <li><a href="my_account.php">My Account</a></li>
+                <li><a href="../home_admin.html">Home</a></li>
+                <li><a href="../gallery_admin.html">Gallery</a></li>
+                <li><a href="manajemen_pengiriman.php">Manajemen</a></li>
+                <li><a href="../contact_admin.html">About Us</a></li>
+                <li><a href="my_account_admin.php">My Account</a></li>
             </ul>
         </nav>
     </header>
@@ -90,17 +89,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p>Nama: <?php echo htmlspecialchars($user['name']); ?></p>
             <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
             <p>Nomor Telepon: <?php echo htmlspecialchars($user['phone']); ?></p>
-            <a href="edit_profile.php" class="btn">Edit Profil</a>
+            <a href="edit_profile_admin.php" class="btn">Edit Profil</a>
         </div>
         <div class="account-section">
-            <h3>Riwayat Pengiriman</h3>
-            <?php if ($result_shipments->num_rows > 0) { ?>
-                <?php while ($shipment = $result_shipments->fetch_assoc()) { ?>
-                    <p>No. Resi: <?php echo htmlspecialchars($shipment['tracking_number']); ?> - Status: <?php echo htmlspecialchars($shipment['status']); ?></p>
-                <?php } ?>
-            <?php } else { ?>
-                <p>Belum ada riwayat pengiriman.</p>
-            <?php } ?>
+            <p><a href="list_account.php" class="btn">Manajemen Akun</a></p>
+        </div>
         <div class="account-section">
             <p><a href="index.php" class="btn">Keluar</a></p>
         </div>

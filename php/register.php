@@ -1,5 +1,7 @@
 <?php
-include 'config.php';
+session_start();
+
+include 'config.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
@@ -8,23 +10,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $user_type = 'member'; // Default user type
+    $user_type = 'member'; 
 
-    if ($password === $confirm_password) {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $sql_check = "SELECT username, email, phone FROM users WHERE username = ? OR email = ? OR phone = ?";
+    $stmt_check = $conn->prepare($sql_check);
+    $stmt_check->bind_param("sss", $username, $email, $phone);
+    $stmt_check->execute();
+    $result_check = $stmt_check->get_result();
 
-        $sql = "INSERT INTO users (username, password, name, email, phone, user_type) VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssss", $username, $hashed_password, $name, $email, $phone, $user_type);
-
-        if ($stmt->execute()) {
-            header("Location: login.php");
-            exit;
-        } else {
-            $error_message = "Error: " . $stmt->error;
+    if ($result_check->num_rows > 0) {
+        $row = $result_check->fetch_assoc();
+        if ($username === $row['username']) {
+            $error_message = "Username sudah digunakan.";
+        } elseif ($email === $row['email']) {
+            $error_message = "Email sudah digunakan.";
+        } elseif ($phone === $row['phone']) {
+            $error_message = "Nomor telepon sudah digunakan.";
         }
     } else {
-        $error_message = "Password dan Konfirmasi Password tidak cocok.";
+        if ($password === $confirm_password) {
+            $sql = "INSERT INTO users (username, password, name, email, phone, user_type) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ssssss", $username, $password, $name, $email, $phone, $user_type);
+
+            if ($stmt->execute()) {
+                header("Location: home.html");
+                exit;
+            } else {
+                $error_message = "Error: " . $stmt->error;
+            }
+        } else {
+            $error_message = "Password dan Konfirmasi Password tidak cocok.";
+        }
     }
 }
 ?>
@@ -35,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
     <div class="login-container">
