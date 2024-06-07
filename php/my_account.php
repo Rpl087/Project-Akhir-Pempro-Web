@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header class="main-menu">
         <div class="container">
-            <img src="logo.png" alt="Pelican Expedition Logo" class="logo">   
+            <img src="img/logo.png" alt="Pelican Expedition Logo" class="logo">   
         </div>
         <nav>
             <ul>
