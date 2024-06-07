@@ -79,6 +79,15 @@ body {
     margin-bottom: 2em;
 }
 
+.konten {
+    display: flex;
+    flex-direction: column;
+    background-color: #9EDDC4;
+}
+
+.konten h1 {
+    text-align: center;
+}
 .text {
     flex: 1;
     margin-right: 2em;
@@ -338,7 +347,8 @@ body {
 
 .form-container {
     background-color: #f9f9f9;
-    position: absolute;
+    position: flex;
+    margin: 0 60vh 0;
     padding: 2em 3em;
     border: 1px solid #ddd;
     border-radius: 8px;
