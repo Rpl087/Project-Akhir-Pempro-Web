@@ -1,6 +1,34 @@
 <?php
 session_start();
-require 'config.php';
+include 'config.php';
+
+// Cek apakah pengguna sudah login
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: index.php");
+    exit;
+}
+
+// Ambil data pengguna dari database
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT name, email, phone FROM users WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+} else {
+    echo "Pengguna tidak ditemukan.";
+    exit;
+}
+
+// Ambil data riwayat pengiriman pengguna dari database
+$sql_shipments = "SELECT tracking_number, status FROM shipments WHERE user_id = ?";
+$stmt_shipments = $conn->prepare($sql_shipments);
+$stmt_shipments->bind_param("i", $user_id);
+$stmt_shipments->execute();
+$result_shipments = $stmt_shipments->get_result();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
@@ -19,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['user_type'] = $user['user_type'];
-            header("Location: index.php");
+            header("Location: my_account.php");
             exit;
         } else {
             $error_message = "Password salah.";
@@ -35,20 +63,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Akun Saya</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form id="login-form" action="login.php" method="POST">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
-            <?php if (isset($error_message)) { echo '<p id="error-message" class="error">' . $error_message . '</p>'; } ?>
-        </form>
+    <header class="main-menu">
+        <div class="container">
+            <img src="logo.png" alt="Pelican Expedition Logo" class="logo">   
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+                <li><a href="cek_resi.php">Cek Resi</a></li>
+                <li><a href="contact.html">About Us</a></li>
+                <li><a href="my_account.php">My Account</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="my-account">
+        <h2>Akun Saya</h2>
+        <div class="account-section">
+            <h3>Profil Pengguna</h3>
+            <p>Nama: <?php echo htmlspecialchars($user['name']); ?></p>
+            <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
+            <p>Nomor Telepon: <?php echo htmlspecialchars($user['phone']); ?></p>
+            <a href="edit_profile.php" class="btn">Edit Profil</a>
+        </div>
+        <div class="account-section">
+            <h3>Riwayat Pengiriman</h3>
+            <?php if ($result_shipments->num_rows > 0) { ?>
+                <?php while ($shipment = $result_shipments->fetch_assoc()) { ?>
+                    <p>No. Resi: <?php echo htmlspecialchars($shipment['tracking_number']); ?> - Status: <?php echo htmlspecialchars($shipment['status']); ?></p>
+                <?php } ?>
+                <a href="view_shipments.php" class="btn">Lihat Semua</a>
+            <?php } else { ?>
+                <p>Belum ada riwayat pengiriman.</p>
+            <?php } ?>
+        </div>
+        <div class="account-section">
+            <h3>Pengaturan</h3>
+            <p><a href="change_password.php" class="btn">Ubah Kata Sandi</a></p>
+            <p><a href="index.php" class="btn">Keluar</a></p>
+        </div>
     </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Pelican Expedition. All rights reserved.</p>
+    </footer>
 </body>
 </html>
