@@ -13,10 +13,10 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px; 
-    width: 100%; 
+    max-width: 400px; /* Mengatur lebar maksimum */
+    width: 100%; /* Mengisi lebar parent */
     text-align: center;
-    margin: auto; 
+    margin: auto; /* Pusatkan dalam kontainer */
 }
 
 h2 {
@@ -35,7 +35,7 @@ input {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box; 
+    box-sizing: border-box; /* Hindari penambahan lebar dari border dan padding */
 }
 
 button {
